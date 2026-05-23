@@ -125,6 +125,7 @@ body {
    3. NAVBAR (ՆԱՎԻԳԱՑԻԱ)
    ========================================== */
 .navbar {
+    position: relative !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
