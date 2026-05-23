@@ -1,6 +1,9 @@
 /* ==========================================
    1. ԳԼԽԱՎՈՐ ՓՈՓՈԽԱԿԱՆՆԵՐ (Գույների և ոճերի կառավարում)
    ========================================== */
+   body {
+    overflow-x: hidden; /* Թաքցնում է դեպի աջ ցանկացած ավելորդ ծավալ */
+}
 :root {
     --primary: #0ea5e9;         /* Բժշկական վառ երկնագույն */
     --primary-dark: #0284c7;    /* Մուգ երկնագույն (hover-ների համար) */
@@ -147,6 +150,10 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
+}
+
+.nav-links.active {
+    display: flex !important;
 }
 
 .nav-links li {
@@ -472,10 +479,12 @@ body {
 }
 
 .faq-answer {
-    padding: 20px 25px;
-    color: var(--text-muted);
-    border-top: 1px solid #e2e8f0;
-    background-color: var(--white);
+    display: none;
+    padding-top: 10px;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
 }
 
 /* ==========================================
@@ -683,5 +692,53 @@ body {
 
     .contact-box {
         padding: 25px 15px;
+    }
+}
+
+/* 1. Սովորական վիճակում կոճակը թաքցնում ենք բոլորի համար */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #0ea5e9;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block !important;
+        position: absolute; /* Սարքում ենք absolute, որ հստակ կառավարենք տեղը */
+        right: 20px; /* Աջից պահում ենք 20px հեռավորություն */
+        top: 50%; /* Ուղղահայաց մեջտեղ բերելու համար */
+        transform: translateY(-50%); /* Ճիշտ կենտրոնացում */
+        z-index: 1001;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        
+        /* ԱՅՍՏԵՂ ՈՒՇԱԴԻՐ. top-ը դնում ենք 100%, որ բացվի հենց սպիտակ header-ի տակից */
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background-color: #0f172a; /* Հղումների ֆոնը թողնում ենք մուգ */
+        padding: 20px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    /* Թիրախավորում ենք բոլոր տիպի վերնագրերը մոբայլում */
+    h1, h2, h3, .hero h1, [class*="title"] {
+        font-size: 22px !important; /* Կտրուկ փոքրացնում ենք */
+        line-height: 1.3 !important;
+        white-space: normal !important; /* Արգելում ենք տեքստին մնալ մեկ տողով */
+        word-break: break-word !important; /* Թույլ ենք տալիս բառերը ջարդել, եթե էլի չեն տեղավորվում */
     }
 }
