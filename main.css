@@ -613,57 +613,38 @@ body {
 }
 /* ՍԱ ԿԱՇԽԱՏԻ ԱՄԲՈՂՋ ՄՈԲԱՅԼԻ ՀԱՄԱՐ (0-ից մինչև 768px) */
 @media screen and (max-width: 768px) {
-    
-    /* Կոճակը ՍՏԻՊՈՂԱԲԱՐ ցույց տալ 600-ի ու 768-ի արանքում ևս */
+    .navbar {
+        position: relative !important;
+    }
     .menu-toggle {
-        display: block !important; 
-        visibility: visible !important;
-        opacity: 1 !important;
+        display: block !important;
         position: absolute !important;
         right: 20px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
-        z-index: 9999 !important; /* Դնում ենք ամենաբարձրը */
+        z-index: 1001 !important;
     }
-
-    /* Հղումները ՍՏԻՊՈՂԱԲԱՐ թաքցնել, մինչև չսեղմեն կոճակին */
     .nav-links {
-        display: none !important; 
-        visibility: hidden;
-        flex-direction: column !important;
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        width: 100% !important;
-        background-color: #0f172a !important;
-        padding: 20px !important;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1) !important;
-        z-index: 9998 !important;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0f172a;
+        padding: 20px;
+        z-index: 1000;
     }
-
-    /* Երբ JS-ով ավելանում է .active դասը */
     .nav-links.active {
         display: flex !important;
-        visibility: visible !important;
-    }
-    
-    /* Թաքցնում ենք Desktop-ի հղումների սովորական (հորիզոնական) վիճակը */
-    nav ul, .nav-menu {
-        display: none !important;
     }
 }
-
 /* 2. ՀԵՌԱԽՈՍՆԵՐԻ ՀԱՄԱՐ (Smartphones - մինչև 600px) */
 @media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        gap: 12px;
-        padding: 15px;
-    }
-
+    /* .navbar-ի կանոնը այստեղից լրիվ հանեցինք, որ չխանգարի */
 
     .nav-links li {
-        margin: 0 10px;
+        margin: 0 10px; /* Սա թողեցինք, սրան ձեռք չտվեցինք */
     }
 
     .nav-btn {
@@ -741,4 +722,3 @@ body {
     color: #0ea5e9;
     cursor: pointer;
 }
-
